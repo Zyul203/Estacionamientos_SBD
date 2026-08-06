@@ -1,5 +1,4 @@
 package org.example;
-
 import java.util.ArrayList;
 
 public class Estacionamiento
@@ -17,7 +16,6 @@ public class Estacionamiento
         listaVehiculos.add(vehiculo);
         System.out.println("Vehículo con placa [" + vehiculo.getPlaca() + "] registrado con éxito.");
     }
-
 
 
     public void MostrarVehiculos()

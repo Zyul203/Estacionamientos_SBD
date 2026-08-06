@@ -10,7 +10,7 @@ public class Moto extends Vehiculo
     @Override
     public String toString()
     {
-        return "Tipo: Moto | Placa: " + placa +  " | Horas: " + horasEstacionado + " | Tarifa: $" + tarifa;
+        return "Tipo: Moto | Placa: " + placa +  " | Horas: " + horasEstacionado + " | Tarifa: $" + calcularCostoEstacionamiento();
     }
 
 

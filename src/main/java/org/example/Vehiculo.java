@@ -24,6 +24,5 @@ package org.example;
             return tarifa.calcular(this.horasEstacionado);
         }
 
-
     }
 

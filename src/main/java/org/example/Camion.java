@@ -9,6 +9,6 @@ public class Camion extends Vehiculo
     @Override
     public String toString()
     {
-        return "Tipo: Camion | Placa: " + placa +  " | Horas: " + horasEstacionado + " | Tarifa: $" + tarifa;
+        return "Tipo: Camion | Placa: " + placa +  " | Horas: " + horasEstacionado + " | Tarifa: $" + calcularCostoEstacionamiento();
     }
 }

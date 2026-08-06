@@ -16,7 +16,7 @@ public class Main
 
         Parking.MostrarVehiculos();
 
-        //Parking.imprimirReporteDiario();
+        Parking.imprimirReporteDiario();
 
 
 

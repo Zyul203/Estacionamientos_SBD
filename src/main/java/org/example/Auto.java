@@ -12,6 +12,6 @@ public class Auto extends Vehiculo
     @Override
     public String toString()
     {
-        return "Tipo: Auto | Placa: " + placa +  " | Horas: " + horasEstacionado + " | Tarifa: $" + tarifa;
+        return "Tipo: Auto | Placa: " + placa +  " | Horas: " + horasEstacionado + " | Tarifa: $" + calcularCostoEstacionamiento();
     }
 }
