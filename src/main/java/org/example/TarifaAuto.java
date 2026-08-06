@@ -8,7 +8,5 @@ package org.example;
         {
             return horas * 2.0;
         }
-
-
     }
 

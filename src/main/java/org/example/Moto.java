@@ -12,4 +12,6 @@ public class Moto extends Vehiculo
     {
         return "Tipo: Moto | Placa: " + placa +  " | Horas: " + horasEstacionado + " | Tarifa: $" + tarifa;
     }
+
+
 }
