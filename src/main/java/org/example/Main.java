@@ -1,9 +1,53 @@
 package org.example;
+import org.example.SQL.Metodos_SQL;
+import java.util.Scanner;
 
 public class Main
 {
-    static void main()
+    public static void main(String[] args)
     {
+        Scanner sc = new Scanner(System.in);
+        int opcion;
+
+        do
+        {
+            System.out.println("\n=== MENÚ DE GESTIÓN DE ESTACIONAMIENTOS ===");
+            System.out.println("1. Registrar estacionamiento de vehiculo");
+            System.out.println("2. Eliminar registro de estacionamiento de vehiculo");
+            System.out.println("3. Mostrar registros de estacionamiento de motos");
+            System.out.println("4. Mostrar registros de estacionamientos de autos");
+            System.out.println("4. Mostrar registros de estacionamiento camiones");
+            System.out.println("5. Mostrar total de tarifas");
+            System.out.println("6. Buscar registro de estacionamiento mediante la placa del vehiculo");
+            System.out.println("7. Salir");
+            System.out.print("Selecciona una opción: ");
+
+            opcion = sc.nextInt();
+            sc.nextLine(); // Limpiar buffer
+
+            switch (opcion)
+            {
+                case 1 -> Metodos_SQL.CrearRegistro();
+                case 2 -> Metodos.Mostrar_AlumnosTodos();
+                case 3 -> Metodos.Mostrar_Alumnos15Y();
+                case 4 -> Metodos.EliminarAlumnoM();
+                case 5 -> Metodos.ActualizarAlumnoM();
+                case 6 -> Metodos.ContarPorSexo();
+                case 7 -> System.out.println("Saliendo del programa...");
+                default -> System.out.println("Opción no válida.");
+            }
+        } while (opcion != 7);
+    }
+
+
+
+
+
+
+
+
+
+    /*
         // Crear el estacionamiento
         Estacionamiento Parking = new Estacionamiento();
 
@@ -19,8 +63,7 @@ public class Main
         Parking.imprimirReporteDiario();
 
 
-
-    }
+    */
 
 
 }

@@ -32,6 +32,8 @@ public class VehiculoSql
     }
 
 
+
+
     public int save() throws Exception
     {
         String sql = "INSERT INTO VehiculoSql (placa, tipo, horas, tarifa) VALUES (?,?,?,?)";
@@ -41,9 +43,9 @@ public class VehiculoSql
         {
 
             stmt.setString(1, this.placa);
-            stmt.setString(1, this.tipo);
-            stmt.setInt(1, this.horas);
-            stmt.setDouble(1, this.tarifa);
+            stmt.setString(2, this.tipo);
+            stmt.setInt(3, this.horas);
+            stmt.setDouble(4, this.tarifa);
 
             int funcion = stmt.executeUpdate();
             if (funcion > 0)
@@ -59,4 +61,19 @@ public class VehiculoSql
         }
     }
 
+
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getPlaca() { return placa; }
+    public void setPlaca(String placa) { this.placa = placa; }
+
+    public String getTipo() { return tipo; }
+    public void setTipo(String tipo) { this.tipo = tipo; }
+
+    public int getHoras() { return horas; }
+    public void setHoras(int horas) { this.horas = horas; }
+
+    public double getTarifa() { return tarifa; }
+    public void setTarifa(double tarifa) { this.tarifa = tarifa; }
 }
