@@ -54,6 +54,7 @@ public class Metodos_SQL
         }
     }
 
+
     // --- OPCIÓN 4: ELIMINAR ALUMNOS  ---
     public static void Eliminar_Registro()
     {
@@ -105,5 +106,72 @@ public class Metodos_SQL
         }
     }
 
+    public static void Mostrar_RegistrosAutos()
+    {
+        System.out.println("\n--- LISTA DE ESTACIONAMIENTOS DE AUTOS ---");
 
+        try
+        {
+            List<VehiculoSql> autos = VehiculoSql.getAllAutos("Auto");
+
+            if (autos.isEmpty())
+            {
+                System.out.println("No hay autos registrados en la base de datos.");
+                return;
+            }
+
+            System.out.println("--------------------------------------------------------------------------------------------------");
+            System.out.printf("%-5s | %-15s | %-15s | %-5s | %-5s \n", "ID", "Placa", "Tipo", "Horas", "Tarifa");
+            System.out.println("--------------------------------------------------------------------------------------------------");
+
+            for (VehiculoSql a : autos)
+            {
+                System.out.printf("%-5s | %-15s | %-15s | %-5s | %-5s\n",
+                        a.getId(),
+                        a.getPlaca(),
+                        a.getTipo(),
+                        a.getHoras(),
+                        a.getTarifa());
+            }
+            System.out.println("--------------------------------------------------------------------------------------------------");
+
+        } catch (Exception e) {
+            System.err.println("Error al consultar la lista de estacionamientos de autos: " + e.getMessage());
+        }
+    }
+
+
+    public static void Mostrar_RegistrosCamiones()
+    {
+        System.out.println("\n--- LISTA DE ESTACIONAMIENTOS DE CAMIONES ---");
+
+        try
+        {
+            List<VehiculoSql> camiones = VehiculoSql.getAllAutos("Camion");
+
+            if (camiones.isEmpty())
+            {
+                System.out.println("No hay camiones registrados en la base de datos.");
+                return;
+            }
+
+            System.out.println("--------------------------------------------------------------------------------------------------");
+            System.out.printf("%-5s | %-15s | %-15s | %-5s | %-5s \n", "ID", "Placa", "Tipo", "Horas", "Tarifa");
+            System.out.println("--------------------------------------------------------------------------------------------------");
+
+            for (VehiculoSql a : camiones)
+            {
+                System.out.printf("%-5s | %-15s | %-15s | %-5s | %-5s\n",
+                        a.getId(),
+                        a.getPlaca(),
+                        a.getTipo(),
+                        a.getHoras(),
+                        a.getTarifa());
+            }
+            System.out.println("--------------------------------------------------------------------------------------------------");
+
+        } catch (Exception e) {
+            System.err.println("Error al consultar la lista de estacionamientos de camiones: " + e.getMessage());
+        }
+    }
 }

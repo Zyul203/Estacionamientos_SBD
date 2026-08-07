@@ -72,7 +72,7 @@ public class VehiculoSql
     }
 
     public static List<VehiculoSql> getAllMotos(String tipo) throws Exception {
-        String sql = "SELECT * FROM VehiculoSql where tipo = ?";
+        String sql = "SELECT * FROM Vehiculo where tipo = ?";
         List<VehiculoSql> listaMotos = new ArrayList<>();
 
         try (Connection con = Conexion.getConexion();
@@ -91,6 +91,53 @@ public class VehiculoSql
                         rs.getDouble("tarifa")));
             }
             return listaMotos;
+        }
+    }
+
+    public static List<VehiculoSql> getAllAutos(String tipo) throws Exception {
+        String sql = "SELECT * FROM Vehiculo where tipo = ?";
+        List<VehiculoSql> listaAutos = new ArrayList<>();
+
+        try (Connection con = Conexion.getConexion();
+             PreparedStatement stmt = con.prepareStatement(sql))
+        {
+            stmt.setString(1, tipo);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next())
+            {
+                listaAutos.add(new VehiculoSql(
+                        rs.getInt("id"),
+                        rs.getString("placa"),
+                        rs.getString("tipo"),
+                        rs.getInt("horas"),
+                        rs.getDouble("tarifa")));
+            }
+            return listaAutos;
+        }
+    }
+
+
+    public static List<VehiculoSql> getAllCamiones(String tipo) throws Exception {
+        String sql = "SELECT * FROM Vehiculo where tipo = ?";
+        List<VehiculoSql> listaCamiones = new ArrayList<>();
+
+        try (Connection con = Conexion.getConexion();
+             PreparedStatement stmt = con.prepareStatement(sql))
+        {
+            stmt.setString(1, tipo);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next())
+            {
+                listaCamiones.add(new VehiculoSql(
+                        rs.getInt("id"),
+                        rs.getString("placa"),
+                        rs.getString("tipo"),
+                        rs.getInt("horas"),
+                        rs.getDouble("tarifa")));
+            }
+            return listaCamiones;
         }
     }
 
