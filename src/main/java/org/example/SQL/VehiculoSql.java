@@ -141,6 +141,22 @@ public class VehiculoSql
         }
     }
 
+    public static VehiculoSql Find(String placa) throws Exception {
+        try(Connection con= Conexion.getConexion();
+            PreparedStatement stmt = con.prepareStatement("select * from Vehiculo where placa = ?");
+        ) {
+            stmt.setString(1, placa);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                return new VehiculoSql(rs.getInt("id"),
+                        rs.getString("placa"),
+                        rs.getString("tipo"),
+                        rs.getInt("horas"),
+                        rs.getDouble("tarifa"));
+            }
+            return null;
+        }
+    }
 
 
     public int getId() { return id; }

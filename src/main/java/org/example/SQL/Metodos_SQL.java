@@ -6,6 +6,9 @@ import org.example.Camion;
 import org.example.Moto;
 import org.example.Vehiculo;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,11 +43,11 @@ public class Metodos_SQL
 
             double tarifa = vehiculo.calcularCostoEstacionamiento();
 
-            VehiculoSql nuevoRegistro = new VehiculoSql(placa, tipo, horas, tarifa  );
             // Creamos el objeto con el constructor para nuevos registros
+            VehiculoSql nuevoRegistro = new VehiculoSql(placa, tipo, horas, tarifa  );
 
-            // Se usa la función .save() para crear nuevos registros
             int funcion = nuevoRegistro.save();
+            //nuevoRegistro.save();
 
             //Mensaje por si se inserto o no el registro
             if (funcion > 0) System.out.println("Registro guardado exitosamente con ID: " + nuevoRegistro.getId());
@@ -147,7 +150,7 @@ public class Metodos_SQL
 
         try
         {
-            List<VehiculoSql> camiones = VehiculoSql.getAllAutos("Camion");
+            List<VehiculoSql> camiones = VehiculoSql.getAllCamiones("Camion");
 
             if (camiones.isEmpty())
             {
@@ -172,6 +175,39 @@ public class Metodos_SQL
 
         } catch (Exception e) {
             System.err.println("Error al consultar la lista de estacionamientos de camiones: " + e.getMessage());
+        }
+    }
+
+    public static void Buscar_ByPlaca()
+    {
+        System.out.println("\n--- BUSCAR REGISTRO DE ESTACIONAMIENTO ---");
+        try
+        {
+            System.out.print("Ingrese la placa del vehiculo a buscar: ");
+            String placa = sc.nextLine();
+
+            // Guardar el objeto que retorna la búsqueda
+            VehiculoSql v = VehiculoSql.Find(placa);
+
+            // Verificar si existe y mostrar sus datos
+            if (v != null) {
+                System.out.println("\n--- VEHÍCULO ENCONTRADO ---");
+                System.out.println("--------------------------------------------------------------------------------------------------");
+                System.out.printf("%-5s | %-15s | %-15s | %-5s | %-5s \n", "ID", "Placa", "Tipo", "Horas", "Tarifa");
+                System.out.printf("%-5s | %-15s | %-15s | %-5s | %-5s\n",
+                        v.getId(),
+                        v.getPlaca(),
+                        v.getTipo(),
+                        v.getHoras(),
+                        v.getTarifa());
+                System.out.println("--------------------------------------------------------------------------------------------------");
+
+            } else {
+                System.out.println("No se encontró ningún vehículo registrado con la placa: " + placa);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error al buscar registro " + e.getMessage());
         }
     }
 }
