@@ -36,7 +36,7 @@ public class VehiculoSql
 
     public int save() throws Exception
     {
-        String sql = "INSERT INTO VehiculoSql (placa, tipo, horas, tarifa) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Vehiculo (placa, tipo, horas, tarifa) VALUES (?,?,?,?)";
 
         try (Connection con = Conexion.getConexion();
              PreparedStatement stmt = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS))
@@ -60,6 +60,40 @@ public class VehiculoSql
             return funcion;
         }
     }
+
+    public static int deletebyId(int id) throws Exception
+    {
+        try( Connection con= Conexion.getConexion();
+             PreparedStatement stmt = con.prepareStatement("DELETE FROM Vehiculo where id = ?");
+        ) {
+            stmt.setInt(1, id);
+            return stmt.executeUpdate();
+        }
+    }
+
+    public static List<VehiculoSql> getAllMotos(String tipo) throws Exception {
+        String sql = "SELECT * FROM VehiculoSql where tipo = ?";
+        List<VehiculoSql> listaMotos = new ArrayList<>();
+
+        try (Connection con = Conexion.getConexion();
+             PreparedStatement stmt = con.prepareStatement(sql))
+        {
+            stmt.setString(1, tipo);
+
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next())
+            {
+                listaMotos.add(new VehiculoSql(
+                        rs.getInt("id"),
+                        rs.getString("placa"),
+                        rs.getString("tipo"),
+                        rs.getInt("horas"),
+                        rs.getDouble("tarifa")));
+            }
+            return listaMotos;
+        }
+    }
+
 
 
     public int getId() { return id; }

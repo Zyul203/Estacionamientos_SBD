@@ -28,11 +28,12 @@ public class Main
             switch (opcion)
             {
                 case 1 -> Metodos_SQL.CrearRegistro();
-                case 2 -> Metodos.Mostrar_AlumnosTodos();
-                case 3 -> Metodos.Mostrar_Alumnos15Y();
-                case 4 -> Metodos.EliminarAlumnoM();
-                case 5 -> Metodos.ActualizarAlumnoM();
-                case 6 -> Metodos.ContarPorSexo();
+                case 2 -> Metodos_SQL.Eliminar_Registro();
+                case 3 -> Metodos_SQL.Mostrar_RegistrosMotos();
+                case 3 -> Metodos_SQL.Mostrar_Alumnos15Y();
+                case 4 -> Metodos_SQL.EliminarAlumnoM();
+                case 5 -> Metodos_SQL.ActualizarAlumnoM();
+                case 6 -> Metodos_SQL.ContarPorSexo();
                 case 7 -> System.out.println("Saliendo del programa...");
                 default -> System.out.println("Opción no válida.");
             }
