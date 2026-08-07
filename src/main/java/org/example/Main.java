@@ -28,7 +28,7 @@ public class Main {
                 case 3 -> Metodos_SQL.Mostrar_RegistrosMotos();
                 case 4 -> Metodos_SQL.Mostrar_RegistrosAutos();
                 case 5 -> Metodos_SQL.Mostrar_RegistrosCamiones();
-                //case 6 -> Metodos_SQL.Mostrar_Total();
+                case 6 -> Metodos_SQL.Mostrar_Total();
                 case 7 -> Metodos_SQL.Buscar_ByPlaca();
                 case 8 -> System.out.println("Saliendo del programa...");
                 default -> System.out.println("Opción no válida.");

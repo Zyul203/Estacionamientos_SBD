@@ -210,4 +210,22 @@ public class Metodos_SQL
             System.err.println("Error al buscar registro " + e.getMessage());
         }
     }
+
+    public static void Mostrar_Total()
+    {
+        System.out.println("\n--- RECAUDACION TOTAL DE TARIFAS ---");
+        try {
+            double total = VehiculoSql.getSumaTarifas();
+            System.out.printf("El total acumulado de las tarifas es: $%.2f\n", total);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 }
+
+
+
+

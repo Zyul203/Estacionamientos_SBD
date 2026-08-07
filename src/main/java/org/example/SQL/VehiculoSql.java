@@ -158,6 +158,19 @@ public class VehiculoSql
         }
     }
 
+    public static double getSumaTarifas() throws Exception
+    {
+        String sql = "SELECT SUM(tarifa) AS Total FROM Vehiculo";
+        try(Connection con= Conexion.getConexion();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            ResultSet rs = stmt.executeQuery()) {
+            if (rs.next()) {
+                return rs.getDouble("Total");
+            }
+            return 0.0;
+        }
+    }
+
 
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
